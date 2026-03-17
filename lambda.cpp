@@ -61,7 +61,10 @@ int main(int argc, char* argv[]) {
 
         int size = 2;
         const int INCREMENT = size;
-        std::function<int(std::string_view)> f;
+        std::function<int(std::string_view)> f = [INCREMENT](std::string_view s) {
+
+            return s.size() + INCREMENT;
+        };
 
         if (f) {
             assert(framework.apply(f, "a") == 3);
