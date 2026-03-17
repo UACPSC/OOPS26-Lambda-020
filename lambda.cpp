@@ -76,7 +76,10 @@ int main(int argc, char* argv[]) {
         Framework framework;
 
         int increment = 2;
-        std::function<int(std::string_view)> f;
+        std::function<int(std::string_view)> f = [increment](std::string_view s) {
+
+            return s.size() + increment;
+        };
 
         if (f) {
             assert(framework.apply(f, "a") == 3);
