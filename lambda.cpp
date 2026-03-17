@@ -151,7 +151,10 @@ int main(int argc, char* argv[]) {
         Framework framework;
         StringIncrementer incrementer;
 
-        std::function<int(std::string_view)> f;
+        std::function<int(std::string_view)> f = [&incrementer](std::string_view s) {
+
+            return incrementer.incrementLengthWithLogging(s);
+        };
 
         if (f) {
             assert(framework.apply(f, "a") == 3);
