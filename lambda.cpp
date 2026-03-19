@@ -19,11 +19,7 @@ int main(int argc, char* argv[]) {
     {
         Framework framework;
 
-        std::function<int(std::string_view)> f = incrementLength;
-
-        if (f) {
-            assert(framework.apply(f, "a") == 3);
-        }
+        assert(framework.apply(incrementLength, "a") == 3);
     }
 
     // empty capture
